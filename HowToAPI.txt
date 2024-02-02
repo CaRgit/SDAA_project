@@ -1,0 +1,9 @@
+install node with:
+ curl -sL https://deb.nodesource.com/setup_18.x — Node.js 18 LTS "Hydrogen" | sudo -E bash -
+ apt-get install nodejs -y
+
+
+
+Start Server by navigating to API folder in shell/cmd and type: npm start
+
+Server should be reachable in localhost:5005
