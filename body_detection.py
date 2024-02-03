@@ -5,6 +5,7 @@ import time
 import threading
 from sense_hat import SenseHat
 import numpy as np
+import urllib
 
 G = [0, 100, 0]
 FULL_GREEN = [
@@ -247,6 +248,9 @@ time.sleep(1)
 timer_secs = 110
 countdown_timer = CountdownTimer()
 
+ispaused = False
+mode = "spotify"
+
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
     image = frame.array
@@ -265,6 +269,32 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     
     if len(boxes) > 0:
 #        print ("Human detected")
+        countdown_timer.start(new_time = timer_secs)
+      
+    events = sense.stick.get_events()
+    if events:
+        if mode == "spotify":
+            for event in events:
+                if event.direction  == "middle" and event.action != "released" and ispaused:
+                    urllib.request.urlopen('localhost:5005/play')
+                    ispaused = False
+                if event.direction  == "middle" and event.action != "released" and !ispaused:
+                    urllib.request.urlopen('localhost:5005/stop')
+                    ispaused = True
+                if event.direction  == "right" and event.action != "released":
+                    urllib.request.urlopen('localhost:5005/next')
+                if event.direction  == "left" and event.action != "released":
+                    urllib.request.urlopen('localhost:5005/previous')
+                if event.direction  == "up" and event.action != "released":
+                    urllib.request.urlopen('localhost:5005/volume/+1')
+                if event.direction  == "down" and event.action != "released":
+                    urllib.request.urlopen('localhost:5005/volume/-1')
+        elif mode == "modify_timer":
+                if event.direction  == "up" and event.action != "released":
+                    timer_secs += 1
+                if event.direction  == "down" and event.action != "released":
+                    if timer_secs > 0:
+                      timer_secs -= 1
         countdown_timer.start(new_time = timer_secs)
 
     if key == ord("q"):
