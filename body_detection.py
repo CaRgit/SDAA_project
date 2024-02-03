@@ -294,7 +294,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
                     timer_secs += 1
                 if event.direction  == "down" and event.action != "released":
                     if timer_secs > 0:
-                      timer_secs -= 1
+                        timer_secs -= 1
         countdown_timer.start(new_time = timer_secs)
 
     if key == ord("q"):
