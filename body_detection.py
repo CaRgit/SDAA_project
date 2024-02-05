@@ -218,10 +218,10 @@ class CountdownTimer:
         while self.is_running and self.time_remaining > 0:
             with self.lock:
                 self.sense.clear()
-                if self.time_remaining > 5:
-                    self.sense.set_pixels(numbers[self.time_remaining])
-                elif self.time_remaining > self.new_time:
+                if self.time_remaining > self.new_time:
                     self.sense.set_pixels(FULL_GREEN)
+                elif self.time_remaining > 5:
+                    self.sense.set_pixels(numbers[self.time_remaining])
                 else:
                     number_red = numbers[self.time_remaining]
                     for index,rgb in enumerate(number_red):
