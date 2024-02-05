@@ -50,3 +50,5 @@ if __name__ == "__main_work__":
   pose = mp_pose.Pose()
 
 display.show_num_wh(2)
+
+listener.stop()
