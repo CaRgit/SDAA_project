@@ -47,7 +47,7 @@ if __name__ == "__main__":
   mp_drawing = mp.solutions.drawing_utils
   pose = mp_pose.Pose()
 
-  timer_secs = 110
+  timer_secs = 10
   countdown_timer = body_detection.CountdownTimer()
   
   ispaused = False
