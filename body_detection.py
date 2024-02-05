@@ -197,10 +197,11 @@ class CountdownTimer:
 
     def start(self, new_time):
         with self.lock:
-            self.sense.clear()
-            self.sense.set_pixels(FULL_GREEN)
-            self.time_remaining = new_time
-            time.sleep(3)
+            #self.sense.clear()
+            #self.sense.set_pixels(FULL_GREEN)
+            self.time_remaining = new_time+3
+            #self.new_time = new_time
+            #time.sleep(3)
             if not self.is_running:
                 self.is_running = True
                 self.timer_thread = threading.Thread(target=self._run_timer)
@@ -219,6 +220,8 @@ class CountdownTimer:
                 self.sense.clear()
                 if self.time_remaining > 5:
                     self.sense.set_pixels(numbers[self.time_remaining])
+                elif self.time_remaining > self.new_time:
+                    self.sense.set_pixels(FULL_GREEN)
                 else:
                     number_red = numbers[self.time_remaining]
                     for index,rgb in enumerate(number_red):
