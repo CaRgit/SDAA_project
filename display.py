@@ -213,6 +213,6 @@ def define_numbers(O,X):
 num_wh = define_numbers(O, X)
 num_rd = define_numbers(O, R)
 
-for i in 100:
+for i in range(100):
     sense.set_pixels(num_wh[i])
     time.sleep(1)
