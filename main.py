@@ -12,6 +12,7 @@ from sense_hat import SenseHat
 import numpy as np
 import urllib
 import mediapipe as mp
+import keyboard
 
 import body_detection
 
@@ -82,7 +83,7 @@ if __name__ == "__main__":
       rawCapture.truncate(0)
   
       # Exit if 'q' key is pressed
-      if cv2.waitKey(1) & 0xFF == ord('q'):
+      if keyboard.is_pressed('q'):
           camera.close()
           break
 
