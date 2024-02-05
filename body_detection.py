@@ -236,7 +236,7 @@ class CountdownTimer:
             with self.lock:
                 self.sense.clear()
                 if self.time_remaining > self.new_time:
-                    if volume_down:
+                    if self.volume_down:
                         self.sense.set_pixels(VOLUME_DOWN)
                     else:
                       self.sense.set_pixels(FULL_GREEN)
