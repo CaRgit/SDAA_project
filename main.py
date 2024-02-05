@@ -67,13 +67,13 @@ if __name__ == "__main__":
               ispaused = True
               print('Estaba sonando y se ha pulsado el pause')
               print('contents: ', contents)
-          if event.direction  == "right" and event.action != "released":
+          if event.direction  == "right" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/next").read()
-          if event.direction  == "left" and event.action != "released":
+          if event.direction  == "left" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/previous").read()
-          if event.direction  == "up" and event.action != "released":
+          if event.direction  == "up" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/volume/+5").read()
-          if event.direction  == "down" and event.action != "released":
+          if event.direction  == "down" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/volume/-5").read()
     
       # Display the frame
