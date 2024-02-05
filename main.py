@@ -57,12 +57,12 @@ if __name__ == "__main__":
       events = sense.stick.get_events()
       for event in events:
           print('Procesando event')
-          if event.direction  == "middle" and event.action != "released" and ispaused:
+          if event.direction  == "middle" and event.action == "pressed" and ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/play").read()
               ispaused = False
               print('Estaba pausado y se ha pulsado el play')
               print('contents: ', contents)
-          elif event.direction  == "middle" and event.action != "released" and not ispaused:
+          elif event.direction  == "middle" and event.action == "pressed" and not ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
               print('Estaba sonando y se ha pulsado el pause')
@@ -71,9 +71,9 @@ if __name__ == "__main__":
               urllib.request.urlopen("http://localhost:5005/next").read()
           if event.direction  == "left" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/previous").read()
-          if event.direction  == "up" and event.action == "pressed":
+          if event.direction  == "up" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/+5").read()
-          if event.direction  == "down" and event.action == "pressed":
+          if event.direction  == "down" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/-5").read()
     
       # Display the frame
