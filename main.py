@@ -56,12 +56,15 @@ if __name__ == "__main__":
           countdown_timer.start(new_time = timer_secs)
       events = sense.stick.get_events()
       for event in events:
+          print('Procesando event')
           if event.direction  == "middle" and event.action != "released" and ispaused:
               urllib.request.urlopen("http://localhost:5005/play").read()
               ispaused = False
+              print('Estaba pausado y se ha pulsado el play')
           if event.direction  == "middle" and event.action != "released" and not ispaused:
               urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
+              print('Estaba sonando y se ha pulsado el pause')
           if event.direction  == "right" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/next").read()
           if event.direction  == "left" and event.action != "released":
