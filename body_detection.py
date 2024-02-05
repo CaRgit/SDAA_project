@@ -208,7 +208,7 @@ class CountdownTimer:
         self.lock = threading.Lock()
         self.sense=SenseHat()
       
-    def update_volume_down(self)
+    def update_volume_down(self):
         self.volume_down = True
 
     def start(self, new_time):
