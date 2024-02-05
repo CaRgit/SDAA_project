@@ -18,7 +18,7 @@ import body_detection
 
 exit = False
 
-def on_press(key):
+def on_release(key):
     global exit
     try:
         if key.char == 'q':
@@ -30,7 +30,7 @@ def on_press(key):
 
 if __name__ == "__main__":
   print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
-  listener = keyboard.Listener(on_press=on_press)
+  listener = keyboard.Listener(on_release=on_release)
   listener.start()
   camera = PiCamera()
   camera.resolution = (640, 480)
