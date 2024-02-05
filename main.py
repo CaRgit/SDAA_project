@@ -94,16 +94,22 @@ if __name__ == "__main__":
               print('contents: ', contents)
           if event.direction  == "right" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/next").read()
+              urllib.request.urlopen("http://localhost:5005/play").read()
+              ispaused = False
               countdown_timer.start(new_time = timer_secs)
           if event.direction  == "left" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/previous").read()
+              urllib.request.urlopen("http://localhost:5005/play").read()
+              ispaused = False
               countdown_timer.start(new_time = timer_secs)
           if event.direction  == "up" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/+1").read()
-              countdown_timer.start(new_time = timer_secs)
+              if not ispaused:
+                  countdown_timer.start(new_time = timer_secs)
           if event.direction  == "down" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/-1").read()
-              countdown_timer.start(new_time = timer_secs)
+              if not ispaused:
+                  countdown_timer.start(new_time = timer_secs)
     
       # Display the frame
       #cv2.imshow("Body", image)
@@ -117,4 +123,5 @@ if __name__ == "__main__":
 
   #cv2.destroyAllWindows()
   countdown_timer.stop()
+  listener.stop()
   
