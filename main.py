@@ -83,21 +83,27 @@ if __name__ == "__main__":
           if event.direction  == "middle" and event.action == "pressed" and ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/play").read()
               ispaused = False
+              countdown_timer.start(new_time = timer_secs)
               print('Estaba pausado y se ha pulsado el play')
               print('contents: ', contents)
           elif event.direction  == "middle" and event.action == "pressed" and not ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
+              countdown_timer.start(new_time = 0)
               print('Estaba sonando y se ha pulsado el pause')
               print('contents: ', contents)
           if event.direction  == "right" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/next").read()
+              countdown_timer.start(new_time = timer_secs)
           if event.direction  == "left" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/previous").read()
+              countdown_timer.start(new_time = timer_secs)
           if event.direction  == "up" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/+1").read()
+              countdown_timer.start(new_time = timer_secs)
           if event.direction  == "down" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/volume/-1").read()
+              countdown_timer.start(new_time = timer_secs)
     
       # Display the frame
       #cv2.imshow("Body", image)
