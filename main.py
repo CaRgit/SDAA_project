@@ -22,9 +22,8 @@ def on_press(key):
     global exit
     try:
         if key.char == 'q':
-            print("La tecla 'q' ha sido presionada. Saliendo del programa.")
+            #print("La tecla 'q' ha sido presionada. Saliendo del programa.")
             exit = True
-            listener.stop()
     except AttributeError:
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
@@ -67,10 +66,17 @@ if __name__ == "__main__":
       result = pose.process(frame_rgb)
   
       # Draw the pose landmarks on the frame
-      if result.pose_landmarks:
-          #mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
-          #print ("Human detected")
-          countdown_timer.start(new_time = timer_secs)
+      if not ispaused:
+          if countdown_timer.is_running = False:
+              urllib.request.urlopen("http://localhost:5005/pause").read()
+          if result.pose_landmarks:
+              if countdown_timer.is_running == True:
+                  countdown_timer.start(new_time = timer_secs)
+              else
+                  countdown_timer.start(new_time = timer_secs)
+                  urllib.request.urlopen("http://localhost:5005/play").read()
+              #mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+              #print ("Human detected")
       events = sense.stick.get_events()
       for event in events:
           print('Procesando event')
