@@ -20,8 +20,8 @@ def on_press(key):
     try:
         if key.char == 'q':
             print("La tecla 'q' ha sido presionada. Saliendo del programa.")
-            camera.close()
-            break
+            #camera.close()
+            #break
     except AttributeError:
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
