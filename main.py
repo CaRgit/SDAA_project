@@ -124,8 +124,7 @@ if __name__ == "__main__":
               urllib.request.urlopen("http://localhost:5005/volume/-1").read()
               if not ispaused:
                   countdown_timer.start(new_time = timer_secs)
-              sense.clear()
-              sense.set_pixels(VOLUME_DOWN)
+              countdown.update_volume_down()
     
       # Display the frame
       #cv2.imshow("Body", image)
