@@ -52,7 +52,7 @@ if __name__ == "__main__":
       # Draw the pose landmarks on the frame
       if result.pose_landmarks:
           #mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
-          print ("Human detected")
+          #print ("Human detected")
           countdown_timer.start(new_time = timer_secs)
       events = sense.stick.get_events()
       for event in events:
