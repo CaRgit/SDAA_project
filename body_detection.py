@@ -232,44 +232,44 @@ class CountdownTimer:
         self.sense.set_pixels(FULL_RED)
         print("Countdown complete!")
 
-camera = PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 30
-camera.rotation = 180
-rawCapture = PiRGBArray(camera, size=(640, 480))
+#camera = PiCamera()
+#camera.resolution = (640, 480)
+#camera.framerate = 30
+#camera.rotation = 180
+#rawCapture = PiRGBArray(camera, size=(640, 480))
 
-display_window = cv2.namedWindow("Faces")
+#display_window = cv2.namedWindow("Faces")
 
-hog = cv2.HOGDescriptor()
-hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+#hog = cv2.HOGDescriptor()
+#hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
-time.sleep(1)
+#time.sleep(1)
 
-timer_secs = 110
-countdown_timer = CountdownTimer()
+#timer_secs = 110
+#countdown_timer = CountdownTimer()
 
 #ispaused = False
 #mode = "spotify"
 
-for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+#for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
-    image = frame.array
-    image = cv2.resize(image, (640,480))
+#    image = frame.array
+#    image = cv2.resize(image, (640,480))
 
     #Detección
-    gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-    boxes, weights = hog.detectMultiScale(image, winStride=(8,8) )
-    for (x,y,w,h) in boxes:
-        cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+#    gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+#    boxes, weights = hog.detectMultiScale(image, winStride=(8,8) )
+#    for (x,y,w,h) in boxes:
+#        cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
 
     #Muestra ventana
-    cv2.imshow("Faces", image)
-    key = cv2.waitKey(1) & 0xFF
-    rawCapture.truncate(0)
+#    cv2.imshow("Faces", image)
+#    key = cv2.waitKey(1) & 0xFF
+#    rawCapture.truncate(0)
     
-    if len(boxes) > 0:
+#    if len(boxes) > 0:
 #        print ("Human detected")
-        countdown_timer.start(new_time = timer_secs)
+#        countdown_timer.start(new_time = timer_secs)
       
 #    events = sense.stick.get_events()
 #    if events:
@@ -297,9 +297,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 #                        timer_secs -= 1
 #        countdown_timer.start(new_time = timer_secs)
 
-    if key == ord("q"):
-        break
+#    if key == ord("q"):
+#        break
     
-camera.close()
-cv2.destroyAllWindows()
-countdown_timer.stop()
+#camera.close()
+#cv2.destroyAllWindows()
+#countdown_timer.stop()
