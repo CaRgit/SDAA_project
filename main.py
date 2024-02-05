@@ -62,7 +62,7 @@ if __name__ == "__main__":
               ispaused = False
               print('Estaba pausado y se ha pulsado el play')
               print('contents: ', contents)
-          if event.direction  == "middle" and event.action == "pressed" and not ispaused:
+          elif event.direction  == "middle" and event.action == "pressed" and not ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
               print('Estaba sonando y se ha pulsado el pause')
