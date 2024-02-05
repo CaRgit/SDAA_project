@@ -16,9 +16,10 @@ from pynput import keyboard
 
 import body_detection
 
-global exit
+exit = false
 
 def on_press(key):
+    global exit
     try:
         if key.char == 'q':
             print("La tecla 'q' ha sido presionada. Saliendo del programa.")
@@ -29,7 +30,6 @@ def on_press(key):
 
 if __name__ == "__main__":
   print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
-  exit = False
   listener = keyboard.Listener(on_press=on_press)
   listener.start()
   camera = PiCamera()
