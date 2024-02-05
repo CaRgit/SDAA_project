@@ -67,7 +67,7 @@ if __name__ == "__main__":
   
       # Draw the pose landmarks on the frame
       if not ispaused:
-          if countdown_timer.is_running = False:
+          if countdown_timer.is_running == False:
               urllib.request.urlopen("http://localhost:5005/pause").read()
           if result.pose_landmarks:
               if countdown_timer.is_running == True:
