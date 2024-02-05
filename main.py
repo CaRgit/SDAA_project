@@ -16,12 +16,13 @@ from pynput import keyboard
 
 import body_detection
 
+global exit = False
+
 def on_press(key):
     try:
         if key.char == 'q':
             print("La tecla 'q' ha sido presionada. Saliendo del programa.")
-            #camera.close()
-            #break
+            exit = True
     except AttributeError:
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
@@ -95,9 +96,9 @@ if __name__ == "__main__":
       rawCapture.truncate(0)
   
       # Exit if 'q' key is pressed
-      #if keyboard.is_pressed('q'):
-      #    camera.close()
-      #    break
+      if exit:
+          camera.close()
+          break
 
   #cv2.destroyAllWindows()
   countdown_timer.stop()
