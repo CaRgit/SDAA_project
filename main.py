@@ -14,7 +14,6 @@ import urllib
 import mediapipe as mp
 
 import body_detection
-import posetest_cam
 
 if __name__ == "__main__":
   camera = PiCamera()
