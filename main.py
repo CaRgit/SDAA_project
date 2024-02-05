@@ -16,6 +16,7 @@ import mediapipe as mp
 import body_detection
 
 if __name__ == "__main__":
+  print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
   camera = PiCamera()
   camera.resolution = (640, 480)
   camera.framerate = 30
@@ -72,9 +73,9 @@ if __name__ == "__main__":
           if event.direction  == "left" and event.action == "pressed":
               urllib.request.urlopen("http://localhost:5005/previous").read()
           if event.direction  == "up" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/volume/+5").read()
+              urllib.request.urlopen("http://localhost:5005/volume/+1").read()
           if event.direction  == "down" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/volume/-5").read()
+              urllib.request.urlopen("http://localhost:5005/volume/-1").read()
     
       # Display the frame
       #cv2.imshow("Body", image)
