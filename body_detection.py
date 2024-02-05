@@ -279,16 +279,16 @@ class CountdownTimer:
 #                    urllib.request.urlopen('localhost:5005/play')
 #                    ispaused = False
 #                if event.direction  == "middle" and event.action != "released" and !ispaused:
-#                    urllib.request.urlopen('localhost:5005/stop')
+#                    urllib.request.urlopen('localhost:5005/pause')
 #                    ispaused = True
 #                if event.direction  == "right" and event.action != "released":
 #                    urllib.request.urlopen('localhost:5005/next')
 #                if event.direction  == "left" and event.action != "released":
 #                    urllib.request.urlopen('localhost:5005/previous')
 #                if event.direction  == "up" and event.action != "released":
-#                    urllib.request.urlopen('localhost:5005/volume/+1')
+#                    urllib.request.urlopen('localhost:5005/volume/+5')
 #                if event.direction  == "down" and event.action != "released":
-#                    urllib.request.urlopen('localhost:5005/volume/-1')
+#                    urllib.request.urlopen('localhost:5005/volume/-5')
 #        elif mode == "modify_timer":
 #                if event.direction  == "up" and event.action != "released":
 #                    timer_secs += 1
