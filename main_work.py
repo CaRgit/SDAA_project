@@ -31,7 +31,7 @@ def on_press(key):
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
     
-if __name__ == "__main_work__":
+if __name__ == "__main__":
   print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
   listener = keyboard.Listener(on_press=on_press)
   listener.start()
@@ -48,7 +48,67 @@ if __name__ == "__main_work__":
   mp_pose = mp.solutions.pose
   mp_drawing = mp.solutions.drawing_utils
   pose = mp_pose.Pose()
+  
+  sense = SenseHat()
+  
+cont_play = True
+ispaused = True
+display.show_rd()
+contents = urllib.request.urlopen("http://localhost:5005/pause").read()
+held_released=True
 
-display.show_num_wh(2)
 
+while not exit:
+    if cont_play:
+        # display.show_rd()
+        events = sense.stick.get_events()
+        for event in events:
+            # print('Procesando event')
+            if event.direction  == "middle" and event.action == "pressed" and ispaused:
+                contents = urllib.request.urlopen("http://localhost:5005/play").read()
+                ispaused = False
+                display.show_play()
+                print('Estaba pausado y se ha pulsado el play')
+                print('contents: ', contents)
+            elif event.direction  == "middle" and event.action == "pressed" and not ispaused:
+                contents = urllib.request.urlopen("http://localhost:5005/pause").read()
+                ispaused = True
+                display.show_pause()
+                print('Estaba sonando y se ha pulsado el pause')
+                print('contents: ', contents)
+            if event.direction  == "middle" and event.action == "held" and held_released:
+                cont_play = False
+                held_released = False
+            if event.direction  == "middle" and event.action == "released":
+                held_released = True
+            if event.direction  == "right" and event.action == "pressed":
+                urllib.request.urlopen("http://localhost:5005/next").read()
+                urllib.request.urlopen("http://localhost:5005/play").read()
+                ispaused = False
+                display.show_next()
+                #countdown_timer.start(new_time = timer_secs)
+            if event.direction  == "left" and event.action == "pressed":
+                urllib.request.urlopen("http://localhost:5005/previous").read()
+                urllib.request.urlopen("http://localhost:5005/play").read()
+                ispaused = False
+                display.show_prev()
+                #countdown_timer.start(new_time = timer_secs)
+            if event.direction  == "up" and event.action != "released":
+                urllib.request.urlopen("http://localhost:5005/volume/+1").read()
+                display.show_vol_up()
+            if event.direction  == "down" and event.action != "released":
+                urllib.request.urlopen("http://localhost:5005/volume/-1").read()
+                display.show_vol_dwn()
+    else:
+        display.show_num_wh(2)
+        events = sense.stick.get_events()
+        for event in events:
+            if event.direction  == "middle" and event.action == "held" and held_released:
+                cont_play = True
+                display.show_green()
+                held_released = False
+            if event.direction  == "middle" and event.action == "released":
+                held_released = True
+        
 listener.stop()
+camera.close()

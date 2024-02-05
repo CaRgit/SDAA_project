@@ -29,6 +29,61 @@ VOLUME_DOWN = [
   O, O, O, O, O, O, O, O
   ]
 
+VOLUME_UP = [
+  O, O, O, O, O, O, O, O,
+  O, O, O, X, X, O, O, O,
+  O, O, O, X, X, O, O, O,
+  O, X, X, X, X, X, X, O,
+  O, X, X, X, X, X, X, O,
+  O, O, O, X, X, O, O, O,
+  O, O, O, X, X, O, O, O,
+  O, O, O, O, O, O, O, O,
+  ]
+
+NEXT = [
+  O, O, O, O, O, O, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, X, X, O, X, O, O,
+  O, O, X, X, X, X, O, O,
+  O, O, X, X, X, X, O, O,
+  O, O, X, X, O, X, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, O, O, O, O, O, O,
+  ]
+
+PREV = [
+  O, O, O, O, O, O, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, X, O, X, X, O, O,
+  O, O, X, X, X, X, O, O,
+  O, O, X, X, X, X, O, O,
+  O, O, X, O, X, X, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, O, O, O, O, O, O,
+  ]
+
+PLAY = [
+  O, O, X, O, O, O, O, O,
+  O, O, X, X, O, O, O, O,
+  O, O, X, O, X, O, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, X, O, O, X, O, O,
+  O, O, X, O, X, O, O, O,
+  O, O, X, X, O, O, O, O,
+  O, O, X, O, O, O, O, O,
+  ]
+
+PAUSE = [
+  O, O, O, O, O, O, O, O,
+  O, X, X, O, O, X, X, O,
+  O, X, X, O, O, X, X, O,
+  O, X, X, O, O, X, X, O,
+  O, X, X, O, O, X, X, O,
+  O, X, X, O, O, X, X, O,
+  O, X, X, O, O, X, X, O,
+  O, O, O, O, O, O, O, O,
+  ]
+
 FULL_RED = [
   R, R, R, R, R, R, R, R,
   R, R, R, R, R, R, R, R,
@@ -219,6 +274,16 @@ def show_num_rd(number):
     sense.set_pixels(num_rd[number])
 def show_vol_dwn():
     sense.set_pixels(VOLUME_DOWN)
+def show_vol_up():
+    sense.set_pixels(VOLUME_UP)
+def show_next():
+    sense.set_pixels(NEXT)
+def show_prev():
+    sense.set_pixels(PREV)
+def show_play():
+    sense.set_pixels(PLAY)
+def show_pause():
+    sense.set_pixels(PAUSE)
 def show_green():
     sense.set_pixels(FULL_GREEN)
 def show_rd():
