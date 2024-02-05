@@ -58,13 +58,15 @@ if __name__ == "__main__":
       for event in events:
           print('Procesando event')
           if event.direction  == "middle" and event.action != "released" and ispaused:
-              urllib.request.urlopen("http://localhost:5005/play").read()
+              contents = urllib.request.urlopen("http://localhost:5005/play").read()
               ispaused = False
               print('Estaba pausado y se ha pulsado el play')
+              print('contents: ', contents)
           if event.direction  == "middle" and event.action != "released" and not ispaused:
-              urllib.request.urlopen("http://localhost:5005/pause").read()
+              contents = urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
               print('Estaba sonando y se ha pulsado el pause')
+              print('contents: ', contents)
           if event.direction  == "right" and event.action != "released":
               urllib.request.urlopen("http://localhost:5005/next").read()
           if event.direction  == "left" and event.action != "released":
