@@ -207,6 +207,7 @@ class CountdownTimer:
         self.is_running = False
         self.lock = threading.Lock()
         self.sense=SenseHat()
+        self.volume_down = False
       
     def update_volume_down(self):
         self.volume_down = True
@@ -237,6 +238,7 @@ class CountdownTimer:
                 if self.volume_down:
                     self.sense.set_pixels(VOLUME_DOWN)
                     time.sleep(3)
+                    self.volume_down = False
                 elif self.time_remaining > self.new_time:
                     self.sense.set_pixels(FULL_GREEN)
                 elif self.time_remaining > 5:
