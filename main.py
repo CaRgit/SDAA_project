@@ -24,7 +24,7 @@ def on_press(key):
         if key.char == 'q':
             print("La tecla 'q' ha sido presionada. Saliendo del programa.")
             exit = True
-            return False
+            listener.stop()
     except AttributeError:
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
