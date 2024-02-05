@@ -11,10 +11,10 @@ import threading
 from sense_hat import SenseHat
 import numpy as np
 import urllib
+import mediapipe as mp
 
 import body_detection
 import posetest_cam
-import mediapipe as mp
 
 if __name__ == "__main__":
   camera = PiCamera()
@@ -33,7 +33,7 @@ if __name__ == "__main__":
   pose = mp_pose.Pose()
 
   timer_secs = 110
-  countdown_timer = CountdownTimer()
+  countdown_timer = body_detection.CountdownTimer()
 
   for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
