@@ -7,6 +7,19 @@ from sense_hat import SenseHat
 import numpy as np
 import urllib
 
+O = [0, 0, 0]
+X = [100, 100, 100]
+VOLUME_DOWN = [
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, X, X, X, X, X, X, O,
+  O, X, X, X, X, X, X, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O
+  ]
+
 G = [0, 100, 0]
 FULL_GREEN = [
   G, G, G, G, G, G, G, G,
@@ -194,6 +207,9 @@ class CountdownTimer:
         self.is_running = False
         self.lock = threading.Lock()
         self.sense=SenseHat()
+      
+    def update_volume_down(self)
+        self.volume_down = True
 
     def start(self, new_time):
         with self.lock:
@@ -218,7 +234,10 @@ class CountdownTimer:
         while self.is_running and self.time_remaining > 0:
             with self.lock:
                 self.sense.clear()
-                if self.time_remaining > self.new_time:
+                if self.volume_down:
+                    self.sense.set_pixels(VOLUME_DOWN)
+                    time.sleep(3)
+                elif self.time_remaining > self.new_time:
                     self.sense.set_pixels(FULL_GREEN)
                 elif self.time_remaining > 5:
                     self.sense.set_pixels(numbers[self.time_remaining])
