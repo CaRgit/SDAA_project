@@ -33,6 +33,8 @@ if __name__ == "__main__":
 
   timer_secs = 110
   countdown_timer = body_detection.CountdownTimer()
+  
+  ispaused = False
 
   sense = SenseHat()
 
