@@ -232,8 +232,8 @@ class CountdownTimer:
                 #print(f"Time remaining: {self.time_remaining} seconds")
             time.sleep(1)
         self.is_running = False
-        self.sense.clear()
-        self.sense.set_pixels(FULL_RED)
+        #self.sense.clear()
+        #self.sense.set_pixels(FULL_RED)
         #print("Countdown complete!")
 
 #camera = PiCamera()
