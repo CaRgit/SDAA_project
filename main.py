@@ -98,6 +98,7 @@ if __name__ == "__main__":
   
       # Exit if 'q' key is pressed
       if exit:
+          print("Cerrando camara")
           camera.close()
           break
 
