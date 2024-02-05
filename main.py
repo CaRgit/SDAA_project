@@ -57,19 +57,19 @@ if __name__ == "__main__":
       events = sense.stick.get_events()
       for event in events:
           if event.direction  == "middle" and event.action != "released" and ispaused:
-              urllib.request.urlopen("http://localhost:5005/play")
+              urllib.request.urlopen("http://localhost:5005/play").read()
               ispaused = False
           if event.direction  == "middle" and event.action != "released" and not ispaused:
-              urllib.request.urlopen("http://localhost:5005/pause")
+              urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
           if event.direction  == "right" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/next")
+              urllib.request.urlopen("http://localhost:5005/next").read()
           if event.direction  == "left" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/previous")
+              urllib.request.urlopen("http://localhost:5005/previous").read()
           if event.direction  == "up" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/volume/+5")
+              urllib.request.urlopen("http://localhost:5005/volume/+5").read()
           if event.direction  == "down" and event.action != "released":
-              urllib.request.urlopen("http://localhost:5005/volume/-5")
+              urllib.request.urlopen("http://localhost:5005/volume/-5").read()
     
       # Display the frame
       cv2.imshow("Body", image)
