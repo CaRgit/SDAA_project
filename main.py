@@ -59,7 +59,7 @@ if __name__ == "__main__":
           if event.direction  == "middle" and event.action != "released" and ispaused:
               urllib.request.urlopen('localhost:5005/play')
               ispaused = False
-          if event.direction  == "middle" and event.action != "released" and !ispaused:
+          if event.direction  == "middle" and event.action != "released" and not ispaused:
               urllib.request.urlopen('localhost:5005/pause')
               ispaused = True
           if event.direction  == "right" and event.action != "released":
