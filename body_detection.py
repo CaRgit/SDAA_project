@@ -200,7 +200,7 @@ class CountdownTimer:
             self.sense.clear()
             self.sense.set_pixels(FULL_GREEN)
             self.time_remaining = new_time
-            time.sleep(0.5)
+            time.sleep(3)
             if not self.is_running:
                 self.is_running = True
                 self.timer_thread = threading.Thread(target=self._run_timer)
