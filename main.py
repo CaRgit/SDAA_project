@@ -51,7 +51,7 @@ if __name__ == "__main__":
   
       # Draw the pose landmarks on the frame
       if result.pose_landmarks:
-          mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+          #mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
           print ("Human detected")
           countdown_timer.start(new_time = timer_secs)
       events = sense.stick.get_events()
@@ -77,14 +77,14 @@ if __name__ == "__main__":
               urllib.request.urlopen("http://localhost:5005/volume/-5").read()
     
       # Display the frame
-      cv2.imshow("Body", image)
-      rawCapture.truncate(0)
+      #cv2.imshow("Body", image)
+      #rawCapture.truncate(0)
   
       # Exit if 'q' key is pressed
       if cv2.waitKey(1) & 0xFF == ord('q'):
           camera.close()
           break
 
-  cv2.destroyAllWindows()
+  #cv2.destroyAllWindows()
   countdown_timer.stop()
   
