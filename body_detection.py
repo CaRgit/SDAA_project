@@ -211,6 +211,7 @@ class CountdownTimer:
             self.is_running = False
             time.sleep(1)
             self.sense.clear()
+            self.sense.set_pixels(FULL_RED)
 
     def _run_timer(self):
         while self.is_running and self.time_remaining > 0:
