@@ -34,6 +34,8 @@ if __name__ == "__main__":
   timer_secs = 110
   countdown_timer = body_detection.CountdownTimer()
 
+  sense = SenseHat()
+
   for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 
       image = frame.array
@@ -50,6 +52,22 @@ if __name__ == "__main__":
           mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
           print ("Human detected")
           countdown_timer.start(new_time = timer_secs)
+      events = sense.stick.get_events()
+      for event in events:
+          if event.direction  == "middle" and event.action != "released" and ispaused:
+              urllib.request.urlopen('localhost:5005/play')
+              ispaused = False
+          if event.direction  == "middle" and event.action != "released" and !ispaused:
+              urllib.request.urlopen('localhost:5005/pause')
+              ispaused = True
+          if event.direction  == "right" and event.action != "released":
+              urllib.request.urlopen('localhost:5005/next')
+          if event.direction  == "left" and event.action != "released":
+              urllib.request.urlopen('localhost:5005/previous')
+          if event.direction  == "up" and event.action != "released":
+              urllib.request.urlopen('localhost:5005/volume/+5')
+          if event.direction  == "down" and event.action != "released":
+              urllib.request.urlopen('localhost:5005/volume/-5')
     
       # Display the frame
       cv2.imshow("Body", image)
