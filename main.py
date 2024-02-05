@@ -16,7 +16,7 @@ from pynput import keyboard
 
 import body_detection
 
-exit = false
+exit = False
 
 def on_press(key):
     global exit
