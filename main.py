@@ -7,7 +7,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
 import time
-import threading
+# import threading
 from sense_hat import SenseHat
 import numpy as np
 import urllib
