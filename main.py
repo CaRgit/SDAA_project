@@ -12,12 +12,24 @@ from sense_hat import SenseHat
 import numpy as np
 import urllib
 import mediapipe as mp
-import keyboard
+from pynput import keyboard
 
 import body_detection
 
+def on_press(key):
+    try:
+        if key.char == 'q':
+            print("La tecla 'q' ha sido presionada. Saliendo del programa.")
+            camera.close()
+            break
+    except AttributeError:
+        # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
+        pass
+
 if __name__ == "__main__":
   print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
+  listener = keyboard.Listener(on_press=on_press)
+  listener.start()
   camera = PiCamera()
   camera.resolution = (640, 480)
   camera.framerate = 30
@@ -83,9 +95,9 @@ if __name__ == "__main__":
       rawCapture.truncate(0)
   
       # Exit if 'q' key is pressed
-      if keyboard.is_pressed('q'):
-          camera.close()
-          break
+      #if keyboard.is_pressed('q'):
+      #    camera.close()
+      #    break
 
   #cv2.destroyAllWindows()
   countdown_timer.stop()
