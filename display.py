@@ -6,8 +6,7 @@ Created on Mon Feb  5 15:51:00 2024
 """
 
 import numpy as np
-from sense_hat import SenseHat as sense
-import time
+from sense_hat import SenseHat
 
 
 #define all the colors:
@@ -212,7 +211,15 @@ def define_numbers(O,X):
 #create number arrays
 num_wh = define_numbers(O, X)
 num_rd = define_numbers(O, R)
+sense = SenseHat()
 
-for i in range(100):
-    sense.set_pixels(num_wh[i])
-    time.sleep(1)
+def show_num_wh(number):
+    sense.set_pixels(num_wh[number])
+def show_num_rd(number):
+    sense.set_pixels(num_rd[number])
+def show_vol_dwn():
+    sense.set_pixels(VOLUME_DOWN)
+def show_green():
+    sense.set_pixels(FULL_GREEN)
+def show_rd():
+    sense.set_pixels(FULL_RED)
