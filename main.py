@@ -18,19 +18,20 @@ import body_detection
 
 exit = False
 
-def on_release(key):
+def on_press(key):
     global exit
     try:
         if key.char == 'q':
             print("La tecla 'q' ha sido presionada. Saliendo del programa.")
             exit = True
+            return False
     except AttributeError:
         # Ignorar si la tecla no es un carácter (por ejemplo, una tecla especial)
         pass
 
 if __name__ == "__main__":
   print("Bienvenido al proyecto de integración de Raspberry Pi con altavoz SONOS")
-  listener = keyboard.Listener(on_release=on_release)
+  listener = keyboard.Listener(on_press=on_press)
   listener.start()
   camera = PiCamera()
   camera.resolution = (640, 480)
