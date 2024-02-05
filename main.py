@@ -16,6 +16,19 @@ from pynput import keyboard
 
 import body_detection
 
+O = [0, 0, 0]
+X = [100, 100, 100]
+VOLUME_DOWN = [
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, X, X, X, X, X, X, O,
+  O, X, X, X, X, X, X, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O,
+  O, O, O, O, O, O, O, O
+  ]
+
 exit = False
 
 def on_press(key):
@@ -111,6 +124,8 @@ if __name__ == "__main__":
               urllib.request.urlopen("http://localhost:5005/volume/-1").read()
               if not ispaused:
                   countdown_timer.start(new_time = timer_secs)
+              sense.clear()
+              sense.set_pixels(VOLUME_DOWN)
     
       # Display the frame
       #cv2.imshow("Body", image)
