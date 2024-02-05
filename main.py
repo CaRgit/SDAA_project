@@ -89,7 +89,8 @@ if __name__ == "__main__":
           elif event.direction  == "middle" and event.action == "pressed" and not ispaused:
               contents = urllib.request.urlopen("http://localhost:5005/pause").read()
               ispaused = True
-              countdown_timer.start(new_time = 0)
+              #countdown_timer.start(new_time = 0)
+              countdown_timer.stop()
               print('Estaba sonando y se ha pulsado el pause')
               print('contents: ', contents)
           if event.direction  == "right" and event.action == "pressed":
