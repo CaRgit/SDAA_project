@@ -22,7 +22,7 @@ if __name__ == "__main__":
   camera.rotation = 180
   rawCapture = PiRGBArray(camera, size=(640, 480))
 
-  display_window = cv2.namedWindow("Body")
+  #display_window = cv2.namedWindow("Body")
 
   time.sleep(1)
   
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     
       # Display the frame
       #cv2.imshow("Body", image)
-      #rawCapture.truncate(0)
+      rawCapture.truncate(0)
   
       # Exit if 'q' key is pressed
       if cv2.waitKey(1) & 0xFF == ord('q'):
