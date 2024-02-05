@@ -72,7 +72,7 @@ if __name__ == "__main__":
           if result.pose_landmarks:
               if countdown_timer.is_running == True:
                   countdown_timer.start(new_time = timer_secs)
-              else
+              else:
                   countdown_timer.start(new_time = timer_secs)
                   urllib.request.urlopen("http://localhost:5005/play").read()
               #mp_drawing.draw_landmarks(image, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
