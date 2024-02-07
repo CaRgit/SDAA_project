@@ -290,3 +290,5 @@ def show_rd():
     sense.set_pixels(FULL_RED)
 def get_pixels():
     return sense.get_pixels()
+def show_clear():
+    sense.clear()
