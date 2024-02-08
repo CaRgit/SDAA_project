@@ -8,6 +8,6 @@ Este proyecto permite controlar un altavoz Sonos utilizando una Raspberry Pi. Se
 -	**Visualización de información**: Se utiliza el Sense HAT de la Raspberry Pi para mostrar información visual, proporcionando retroalimentación al usuario sobre el estado del sistema.
 
 # Requisitos:
-•	Raspberry Pi con Sense HAT y cámara compatible.
-•	Altavoz Sonos compatible.
-•	Conexión a internet para instalar dependencias y actualizar el software.
+-	Raspberry Pi con Sense HAT y cámara compatible.
+-	Altavoz Sonos compatible.
+-	Conexión a internet para instalar dependencias y actualizar el software.
