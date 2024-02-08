@@ -4,7 +4,7 @@ Este proyecto permite controlar un altavoz Sonos utilizando una Raspberry Pi. Se
 # Características principales:
 - **Control del altavoz Sonos**: Se establece una comunicación con el altavoz Sonos a través de mensajes HTTP para controlar su reproducción, volumen y otras funciones desde la Raspberry Pi.
 - **Detección de presencia**: Se utiliza la cámara de la Raspberry Pi junto con algoritmos de machine learning para detectar la presencia de personas en el entorno y realizar ciertas acciones en función de ello.
--	**Interfaz con joystick**: Se detectan los eventos del joystick conectado a la Raspberry Pi para enviar señales adicionales al altavoz Sonos, como cambiar de pista o ajustar el volumen.
+-	**Interfaz con joystick**: Se detectan los eventos del joystick del Sense HAT de la Raspberry Pi para enviar señales adicionales al altavoz Sonos, como cambiar de pista o ajustar el volumen.
 -	**Visualización de información**: Se utiliza el Sense HAT de la Raspberry Pi para mostrar información visual, proporcionando retroalimentación al usuario sobre el estado del sistema.
 
 # Requisitos:
